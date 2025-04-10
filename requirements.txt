@@ -1,0 +1,9 @@
+psycopg2-binary
+FastAPI
+SQLAlchemy
+uvicorn
+pydantic
+databases
+asyncpg
+pytest
+httpx
