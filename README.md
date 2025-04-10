@@ -1,6 +1,25 @@
 # FastAPI Project
 
-This project is a FastAPI application that implements Create, Update, and Get operations for Transactions and Accounts. It utilizes SQLAlchemy for database interactions and Pydantic for data validation.
+This FastAPI application implements Create, Update, and Get operations for Transactions and Accounts. It uses SQLAlchemy for database interactions and Pydantic for data validation.
+
+In addition to the current functionality, the project now includes several improvements and extra features:
+
+- **Database Fallback Mechanism:**  
+  The application checks for an environment variable called `DATABASE_URL` to obtain the PostgreSQL connection string. If this variable is missing, it will automatically fallback to using SQLite, ensuring seamless local development. Inside Docker Compose, the service is configured to always run with PostgreSQL as defined in the orchestration file.
+
+- **Enhanced Validations and Error Handling:**  
+  Additional validations have been incorporated, such as:
+  - **Email Validator:** Ensuring that any provided email addresses conform to standard formats.
+  - **Unique Phone Number Check:** The app now returns a meaningful error if a submitted phone number already exists in the database.
+  - Other custom validations and precise error messaging have been implemented to enhance robustness.
+
+- **Improved Security Practices:**  
+  To safeguard sensitive configurations:
+  - Environment variables can be stored securely using services like **Azure Key Vault**. This adds an extra layer of security by keeping sensitive details like database credentials out of your source code.
+  - Further security measures include secure error handling and rigorous input validation to prevent common vulnerabilities.
+  
+- **Interactive API Documentation:**
+  You can test and interact with the API endpoints using the automatically generated documentation available at [http://localhost:8000/docs]. This interactive UI makes it easier to understand and try out the various endpoints during development.
 
 ## Project Structure
 
@@ -95,6 +114,8 @@ You can run the application in two ways: **Manually** or using **Docker Compose*
 
 ## API Usage
 
+You can test and explore the API endpoints using the built-in documentation UI available at [http://localhost:8000/docs]. This interactive documentation provides comprehensive details and enables you to execute API calls directly from your browser
+
 ### Accounts
 
 - **Create Account**
@@ -124,4 +145,13 @@ You can run the application in two ways: **Manually** or using **Docker Compose*
   - **Response:** Transaction details
 
 
+## Additional Considerations
 
+- **Security:**  
+  For enhanced security in production:
+  - Consider integrating a secret management solution such as **Azure Key Vault** to store and manage environment variables securely.
+  - Follow best practices for securing API endpoints and handling sensitive data.
+
+- **Validation Enhancements:**  
+  Future enhancements might include more granular error handling and additional input validators for other fields as needed.
+  
