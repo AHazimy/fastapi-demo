@@ -76,7 +76,8 @@ You can run the application in two ways: **Manually** or using **Docker Compose*
 
 2. **Build and start the services:**
    ```bash
-   docker-compose up --build
+   docker compose build --no-cache
+   docker compose up 
    ```
 
    This command will start both the web application and the PostgreSQL database services defined in the Docker Compose file.

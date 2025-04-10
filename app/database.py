@@ -3,7 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import os
 import logging
-DATABASE_URL = os.environ['DATABASE_URL']
+DATABASE_URL = os.environ.get('DATABASE_URL')
 
 if not DATABASE_URL:
     engine = create_engine("sqlite:///./test.db", connect_args={"check_same_thread": False})

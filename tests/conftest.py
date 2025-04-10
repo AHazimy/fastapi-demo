@@ -19,10 +19,10 @@ TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=test_
 def create_test_database():
     Base.metadata.create_all(bind=test_engine)
     yield
-    # Base.metadata.drop_all(bind=test_engine)
+    Base.metadata.drop_all(bind=test_engine)
     test_engine.dispose()
-    # if os.path.exists("test_temp.db"):
-    #     os.remove("test_temp.db")
+    if os.path.exists("test_temp.db"):
+        os.remove("test_temp.db")
 
 def override_get_db():
     try:
