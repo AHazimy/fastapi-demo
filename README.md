@@ -23,33 +23,68 @@ fastapi-project
 │── tests
 │   ├── conftest.py        # SQLAlchemy model for accounts
 │   └── test_api.py     # SQLAlchemy model for transactions
-├── Dockerfile          
+├── Dockerfile      
+├── docker-compose.yml    
 ├── requirements.txt          # Project dependencies
 └── README.md                 # Project documentation
 ```
 
-## Setup Instructions
+# Setup Instructions
+
+You can run the application in two ways: **Manually** or using **Docker Compose**. Choose the option that best fits your environment.
+
+---
+
+## Option 1: Running Manually
 
 1. **Clone the repository:**
-   ```
-   git clone <repository-url>
+   ```bash
+   git clone https://github.com/AHazimy/fastapi-demo.git
    cd fastapi-project
    ```
 
 2. **Create a virtual environment:**
-   ```
+   ```bash
    python -m venv venv
-   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   source venv/bin/activate  # On Windows, use: venv\Scripts\activate
    ```
 
 3. **Install dependencies:**
-   ```
+   ```bash
    pip install -r requirements.txt
    ```
 
-4. **Run the application:**
+4. **Run tests:**
+   ```bash
+   pytest --maxfail=1 --disable-warnings -q
    ```
+
+5. **Run the application:**
+   ```bash
    uvicorn app.main:app --reload
+   ```
+
+---
+
+## Option 2: Running with Docker Compose
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/AHazimy/fastapi-demo.git
+   cd fastapi-project
+   ```
+
+2. **Build and start the services:**
+   ```bash
+   docker-compose up --build
+   ```
+
+   This command will start both the web application and the PostgreSQL database services defined in the Docker Compose file.
+
+3. **To stop the services, run:**
+   ```bash
+   docker-compose down
+   ```
    ```
 
 ## API Usage
@@ -81,3 +116,6 @@ fastapi-project
 - **Get Account's Transactions**
   - **Endpoint:** `GET /transactions/{account_id}`
   - **Response:** Transaction details
+
+
+
