@@ -11,7 +11,6 @@ app = FastAPI()
 def on_startup():
     Base.metadata.create_all(bind=engine)
 
-# Include routers
 app.include_router(accounts.router)
 app.include_router(transactions.router)
 
