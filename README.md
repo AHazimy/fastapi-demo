@@ -5,28 +5,28 @@ This project is a FastAPI application that implements Create, Update, and Get op
 ## Project Structure
 
 ```
-fastapi-project
+fastapi-demo
 ├── app
-│   ├── main.py               # Entry point of the FastAPI application
+│   ├── main.py                     # Entry point of the FastAPI application
 │   ├── enums
-│   │   ├── transaction_enums.py        # ENUMs for transactions
+│   │   ├── transaction_enums.py    # ENUMs for transactions
 │   ├── models
-│   │   ├── account.py        # SQLAlchemy model for accounts
-│   │   └── transaction.py     # SQLAlchemy model for transactions
-│   ├── routers
-│   │   ├── accounts.py       # API routes for account operations
-│   │   └── transactions.py    # API routes for transaction operations
-│   ├── schemas
-│   │   ├── account.py        # Pydantic schema for account validation
-│   │   └── transaction.py     # Pydantic schema for transaction validation
-│   └── database.py           # Database connection setup
-│── tests
-│   ├── conftest.py        # SQLAlchemy model for accounts
-│   └── test_api.py     # SQLAlchemy model for transactions
-├── Dockerfile      
-├── docker-compose.yml    
-├── requirements.txt          # Project dependencies
-└── README.md                 # Project documentation
+│   │   ├── account.py              # SQLAlchemy model for accounts
+│   │   └── transaction.py          # SQLAlchemy model for transactions
+│   ├── routers     
+│   │   ├── accounts.py             # API routes for account operations
+│   │   └── transactions.py         # API routes for transaction operations
+│   ├── schemas     
+│   │   ├── account.py              # Pydantic schema for account validation
+│   │   └── transaction.py          # Pydantic schema for transaction validation
+│   └── database.py                 # Database connection setup
+│── tests     
+│   ├── conftest.py                 # SQLAlchemy model for accounts
+│   └── test_api.py                 # SQLAlchemy model for transactions
+├── Dockerfile                      # Container Build
+├── docker-compose.yml              # Service Orchestration
+├── requirements.txt                # Project dependencies
+└── README.md                       # Project documentation
 ```
 
 # Setup Instructions
@@ -40,7 +40,7 @@ You can run the application in two ways: **Manually** or using **Docker Compose*
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/AHazimy/fastapi-demo.git
-   cd fastapi-project
+   cd fastapi-demo
    ```
 
 2. **Create a virtual environment:**
@@ -71,7 +71,7 @@ You can run the application in two ways: **Manually** or using **Docker Compose*
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/AHazimy/fastapi-demo.git
-   cd fastapi-project
+   cd fastapi-demo
    ```
 
 2. **Build and start the services:**
@@ -85,6 +85,11 @@ You can run the application in two ways: **Manually** or using **Docker Compose*
    ```bash
    docker-compose down
    ```
+  
+4. **To run the test:**
+   ```bash
+   docker build --no-cache -t fastapi-test-project .
+   docker run --rm fastapi-test-project pytest --disable-warnings -q
    ```
 
 ## API Usage
